@@ -1,0 +1,319 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B1C1D10000000100000001 /* CalClaudeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000100000001 /* CalClaudeApp.swift */; };
+		A1B1C1D10000000200000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000200000001 /* AppDelegate.swift */; };
+		A1B1C1D10000000300000001 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000300000001 /* FloatingPanel.swift */; };
+		A1B1C1D10000000400000001 /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000400000001 /* HotKeyManager.swift */; };
+		A1B1C1D10000000500000001 /* InputPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000500000001 /* InputPanelView.swift */; };
+		A1B1C1D10000000600000001 /* ClaudeCLIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000600000001 /* ClaudeCLIService.swift */; };
+		A1B1C1D10000000700000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000700000001 /* Assets.xcassets */; };
+		A1B1C1D10000000800000001 /* AccessibilityPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000900000001 /* AccessibilityPermission.swift */; };
+		A1B1C1D10000000900000001 /* AccessibilityRequiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000A00000001 /* AccessibilityRequiredView.swift */; };
+		A1B1C1D10000000B00000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000B00000001 /* SettingsView.swift */; };
+		A1B1C1D10000000C00000001 /* CalendarEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000C00000001 /* CalendarEventPayload.swift */; };
+		A1B1C1D10000000D00000001 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000D00000001 /* CalendarService.swift */; };
+		A1B1C1D10000000E00000001 /* PanelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000E00000001 /* PanelState.swift */; };
+		A1B1C1D40000000200000001 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000F00000001 /* EventKit.framework */; };
+		A1B1C1D10000001000000001 /* CLICheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001000000001 /* CLICheck.swift */; };
+		A1B1C1D10000001100000001 /* OnboardingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001100000001 /* OnboardingState.swift */; };
+		A1B1C1D10000001200000001 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001200000001 /* OnboardingView.swift */; };
+		A1B1C1D10000001300000001 /* OnboardingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001300000001 /* OnboardingWindowController.swift */; };
+		A1B1C1D10000001400000001 /* DebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001400000001 /* DebugLog.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1B1C1D30000000100000001 /* CalClaude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalClaude.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B1C1D20000000100000001 /* CalClaudeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalClaudeApp.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000200000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000300000001 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000400000001 /* HotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyManager.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000500000001 /* InputPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPanelView.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000600000001 /* ClaudeCLIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeCLIService.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000700000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B1C1D20000000800000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1B1C1D20000000900000001 /* AccessibilityPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityPermission.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000A00000001 /* AccessibilityRequiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityRequiredView.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000B00000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000C00000001 /* CalendarEventPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventPayload.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000D00000001 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000E00000001 /* PanelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelState.swift; sourceTree = "<group>"; };
+		A1B1C1D20000000F00000001 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		A1B1C1D20000001000000001 /* CLICheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLICheck.swift; sourceTree = "<group>"; };
+		A1B1C1D20000001100000001 /* OnboardingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingState.swift; sourceTree = "<group>"; };
+		A1B1C1D20000001200000001 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A1B1C1D20000001300000001 /* OnboardingWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWindowController.swift; sourceTree = "<group>"; };
+		A1B1C1D20000001400000001 /* DebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLog.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B1C1D40000000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B1C1D40000000200000001 /* EventKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1B1C1D50000000100000001 = {
+			isa = PBXGroup;
+			children = (
+				A1B1C1D50000000200000001 /* CalClaude */,
+				A1B1C1D50000000300000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B1C1D50000000200000001 /* CalClaude */ = {
+			isa = PBXGroup;
+			children = (
+				A1B1C1D20000000100000001 /* CalClaudeApp.swift */,
+				A1B1C1D20000000200000001 /* AppDelegate.swift */,
+				A1B1C1D20000000300000001 /* FloatingPanel.swift */,
+				A1B1C1D20000000400000001 /* HotKeyManager.swift */,
+				A1B1C1D20000000500000001 /* InputPanelView.swift */,
+				A1B1C1D20000000600000001 /* ClaudeCLIService.swift */,
+				A1B1C1D20000000900000001 /* AccessibilityPermission.swift */,
+				A1B1C1D20000000A00000001 /* AccessibilityRequiredView.swift */,
+				A1B1C1D20000000B00000001 /* SettingsView.swift */,
+				A1B1C1D20000000C00000001 /* CalendarEventPayload.swift */,
+				A1B1C1D20000000D00000001 /* CalendarService.swift */,
+				A1B1C1D20000000E00000001 /* PanelState.swift */,
+				A1B1C1D20000001000000001 /* CLICheck.swift */,
+				A1B1C1D20000001100000001 /* OnboardingState.swift */,
+				A1B1C1D20000001200000001 /* OnboardingView.swift */,
+				A1B1C1D20000001300000001 /* OnboardingWindowController.swift */,
+				A1B1C1D20000001400000001 /* DebugLog.swift */,
+				A1B1C1D20000000700000001 /* Assets.xcassets */,
+				A1B1C1D20000000800000001 /* Info.plist */,
+			);
+			path = CalClaude;
+			sourceTree = "<group>";
+		};
+		A1B1C1D50000000300000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B1C1D30000000100000001 /* CalClaude.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B1C1D60000000100000001 /* CalClaude */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B1C1D70000000200000001 /* Build configuration list for PBXNativeTarget "CalClaude" */;
+			buildPhases = (
+				A1B1C1D60000000200000001 /* Sources */,
+				A1B1C1D40000000100000001 /* Frameworks */,
+				A1B1C1D60000000300000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalClaude;
+			productName = CalClaude;
+			productReference = A1B1C1D30000000100000001 /* CalClaude.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B1C1D80000000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = A1B1C1D70000000100000001 /* Build configuration list for PBXProject "CalClaude" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1B1C1D50000000100000001;
+			productRefGroup = A1B1C1D50000000300000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B1C1D60000000100000001 /* CalClaude */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B1C1D60000000300000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B1C1D10000000700000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B1C1D60000000200000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B1C1D10000000100000001 /* CalClaudeApp.swift in Sources */,
+				A1B1C1D10000000200000001 /* AppDelegate.swift in Sources */,
+				A1B1C1D10000000300000001 /* FloatingPanel.swift in Sources */,
+				A1B1C1D10000000400000001 /* HotKeyManager.swift in Sources */,
+				A1B1C1D10000000500000001 /* InputPanelView.swift in Sources */,
+				A1B1C1D10000000600000001 /* ClaudeCLIService.swift in Sources */,
+				A1B1C1D10000000800000001 /* AccessibilityPermission.swift in Sources */,
+				A1B1C1D10000000900000001 /* AccessibilityRequiredView.swift in Sources */,
+				A1B1C1D10000000B00000001 /* SettingsView.swift in Sources */,
+				A1B1C1D10000000C00000001 /* CalendarEventPayload.swift in Sources */,
+				A1B1C1D10000000D00000001 /* CalendarService.swift in Sources */,
+				A1B1C1D10000000E00000001 /* PanelState.swift in Sources */,
+				A1B1C1D10000001000000001 /* CLICheck.swift in Sources */,
+				A1B1C1D10000001100000001 /* OnboardingState.swift in Sources */,
+				A1B1C1D10000001200000001 /* OnboardingView.swift in Sources */,
+				A1B1C1D10000001300000001 /* OnboardingWindowController.swift in Sources */,
+				A1B1C1D10000001400000001 /* DebugLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1B1C1D90000000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1B1C1D90000000200000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A1B1C1D90000000300000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CalClaude/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calclaude.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A1B1C1D90000000400000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CalClaude/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calclaude.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B1C1D70000000100000001 /* Build configuration list for PBXProject "CalClaude" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B1C1D90000000100000001 /* Debug */,
+				A1B1C1D90000000200000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B1C1D70000000200000001 /* Build configuration list for PBXNativeTarget "CalClaude" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B1C1D90000000300000001 /* Debug */,
+				A1B1C1D90000000400000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1B1C1D80000000100000001 /* Project object */;
+}

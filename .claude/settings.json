@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "security-guidance@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
+  }
+}

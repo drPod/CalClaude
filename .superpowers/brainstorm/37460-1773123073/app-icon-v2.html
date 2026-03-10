@@ -1,0 +1,123 @@
+<h2>App Icon — Refined Option B</h2>
+<p class="subtitle">Terminal + Calendar, with clearer calendar visual cues</p>
+
+<div class="cards">
+  <div class="card" data-choice="b1" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width: 128px; height: 128px; margin: 16px auto; border-radius: 28px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(124, 58, 237, 0.3);">
+        <svg width="72" height="72" viewBox="0 0 72 72">
+          <!-- Terminal prompt -->
+          <text x="10" y="24" fill="#a78bfa" font-family="monospace" font-size="20" font-weight="bold">&gt;_</text>
+          <!-- Calendar with rings and day numbers -->
+          <rect x="8" y="30" width="56" height="38" rx="5" fill="rgba(124,58,237,0.12)" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/>
+          <!-- Calendar top bar (month header) -->
+          <rect x="8" y="30" width="56" height="10" rx="5" fill="rgba(124,58,237,0.25)"/>
+          <!-- Binding rings -->
+          <rect x="20" y="27" width="3" height="8" rx="1.5" fill="rgba(124,58,237,0.6)"/>
+          <rect x="49" y="27" width="3" height="8" rx="1.5" fill="rgba(124,58,237,0.6)"/>
+          <!-- Day labels -->
+          <text x="14" y="48" fill="rgba(255,255,255,0.3)" font-family="-apple-system" font-size="6">M</text>
+          <text x="23" y="48" fill="rgba(255,255,255,0.3)" font-family="-apple-system" font-size="6">T</text>
+          <text x="32" y="48" fill="rgba(255,255,255,0.3)" font-family="-apple-system" font-size="6">W</text>
+          <text x="41" y="48" fill="rgba(255,255,255,0.3)" font-family="-apple-system" font-size="6">T</text>
+          <text x="51" y="48" fill="rgba(255,255,255,0.3)" font-family="-apple-system" font-size="6">F</text>
+          <!-- Day numbers row -->
+          <text x="14" y="57" fill="rgba(255,255,255,0.4)" font-family="-apple-system" font-size="7">5</text>
+          <text x="23" y="57" fill="rgba(255,255,255,0.4)" font-family="-apple-system" font-size="7">6</text>
+          <text x="32" y="57" fill="rgba(255,255,255,0.4)" font-family="-apple-system" font-size="7">7</text>
+          <text x="41" y="57" fill="rgba(255,255,255,0.4)" font-family="-apple-system" font-size="7">8</text>
+          <text x="51" y="57" fill="rgba(255,255,255,0.4)" font-family="-apple-system" font-size="7">9</text>
+          <!-- Highlighted "today" -->
+          <circle cx="33" cy="63" r="5" fill="#7c3aed"/>
+          <text x="31" y="66" fill="white" font-family="-apple-system" font-size="7" font-weight="bold">12</text>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B1: Full Calendar with Rings</h3>
+      <p>Classic calendar look — binding rings, day-of-week headers (M T W T F), numbered days, and a highlighted "today" circle. Unmistakably a calendar.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b2" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width: 128px; height: 128px; margin: 16px auto; border-radius: 28px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(124, 58, 237, 0.3);">
+        <svg width="72" height="72" viewBox="0 0 72 72">
+          <!-- Terminal cursor blinking -->
+          <text x="8" y="22" fill="#a78bfa" font-family="monospace" font-size="18" font-weight="bold">&gt;_</text>
+          <!-- Calendar page with torn top -->
+          <rect x="14" y="28" width="44" height="40" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(124,58,237,0.5)" stroke-width="1.5"/>
+          <!-- Red top stripe like wall calendar -->
+          <rect x="14" y="28" width="44" height="9" rx="4" fill="#7c3aed"/>
+          <text x="24" y="35" fill="white" font-family="-apple-system" font-size="8" font-weight="600">MAR</text>
+          <!-- Large date number -->
+          <text x="22" y="60" fill="rgba(255,255,255,0.8)" font-family="-apple-system" font-size="24" font-weight="700">10</text>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B2: Terminal + Date Page</h3>
+      <p>Terminal prompt above a tear-off calendar page showing month and large date number. Simple, iconic, reads well at small sizes.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b3" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width: 128px; height: 128px; margin: 16px auto; border-radius: 28px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(124, 58, 237, 0.3);">
+        <svg width="72" height="72" viewBox="0 0 72 72">
+          <!-- Terminal prompt -->
+          <text x="8" y="22" fill="#a78bfa" font-family="monospace" font-size="18" font-weight="bold">&gt;_</text>
+          <!-- 7-column calendar grid with clear structure -->
+          <g transform="translate(10, 28)">
+            <!-- Grid background -->
+            <rect width="52" height="40" rx="4" fill="rgba(124,58,237,0.08)" stroke="rgba(124,58,237,0.35)" stroke-width="1"/>
+            <!-- Header row -->
+            <rect width="52" height="9" rx="4" fill="rgba(124,58,237,0.2)"/>
+            <!-- Day headers -->
+            <text x="4" y="7" fill="rgba(255,255,255,0.5)" font-family="-apple-system" font-size="5">S</text>
+            <text x="12" y="7" fill="rgba(255,255,255,0.5)" font-family="-apple-system" font-size="5">M</text>
+            <text x="19" y="7" fill="rgba(255,255,255,0.5)" font-family="-apple-system" font-size="5">T</text>
+            <text x="27" y="7" fill="rgba(255,255,255,0.5)" font-family="-apple-system" font-size="5">W</text>
+            <text x="34" y="7" fill="rgba(255,255,255,0.5)" font-family="-apple-system" font-size="5">T</text>
+            <text x="42" y="7" fill="rgba(255,255,255,0.5)" font-family="-apple-system" font-size="5">F</text>
+            <text x="49" y="7" fill="rgba(255,255,255,0.5)" font-family="-apple-system" font-size="5">S</text>
+            <!-- Horizontal grid lines -->
+            <line x1="0" y1="9" x2="52" y2="9" stroke="rgba(124,58,237,0.15)" stroke-width="0.5"/>
+            <line x1="0" y1="19" x2="52" y2="19" stroke="rgba(124,58,237,0.15)" stroke-width="0.5"/>
+            <line x1="0" y1="29" x2="52" y2="29" stroke="rgba(124,58,237,0.15)" stroke-width="0.5"/>
+            <!-- Row 1 numbers -->
+            <text x="4" y="17" fill="rgba(255,255,255,0.35)" font-size="6">1</text>
+            <text x="12" y="17" fill="rgba(255,255,255,0.35)" font-size="6">2</text>
+            <text x="19" y="17" fill="rgba(255,255,255,0.35)" font-size="6">3</text>
+            <text x="27" y="17" fill="rgba(255,255,255,0.35)" font-size="6">4</text>
+            <text x="34" y="17" fill="rgba(255,255,255,0.35)" font-size="6">5</text>
+            <text x="42" y="17" fill="rgba(255,255,255,0.35)" font-size="6">6</text>
+            <text x="49" y="17" fill="rgba(255,255,255,0.35)" font-size="6">7</text>
+            <!-- Row 2 with highlighted day -->
+            <text x="4" y="27" fill="rgba(255,255,255,0.35)" font-size="6">8</text>
+            <text x="12" y="27" fill="rgba(255,255,255,0.35)" font-size="6">9</text>
+            <!-- Highlighted today circle -->
+            <circle cx="21" cy="25" r="5" fill="#7c3aed"/>
+            <text x="19" y="27" fill="white" font-size="6" font-weight="bold">10</text>
+            <text x="27" y="27" fill="rgba(255,255,255,0.35)" font-size="6">11</text>
+            <text x="34" y="27" fill="rgba(255,255,255,0.35)" font-size="6">12</text>
+            <text x="42" y="27" fill="rgba(255,255,255,0.35)" font-size="6">13</text>
+            <text x="49" y="27" fill="rgba(255,255,255,0.35)" font-size="6">14</text>
+            <!-- Row 3 -->
+            <text x="4" y="37" fill="rgba(255,255,255,0.35)" font-size="6">15</text>
+            <text x="12" y="37" fill="rgba(255,255,255,0.35)" font-size="6">16</text>
+            <text x="19" y="37" fill="rgba(255,255,255,0.35)" font-size="6">17</text>
+            <text x="27" y="37" fill="rgba(255,255,255,0.35)" font-size="6">18</text>
+            <text x="34" y="37" fill="rgba(255,255,255,0.35)" font-size="6">19</text>
+            <text x="42" y="37" fill="rgba(255,255,255,0.35)" font-size="6">20</text>
+            <text x="49" y="37" fill="rgba(255,255,255,0.35)" font-size="6">21</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B3: Terminal + Full Month Grid</h3>
+      <p>Terminal prompt above a proper 7-column month grid with S M T W T F S headers, numbered days, and highlighted today. Maximum calendar clarity.</p>
+    </div>
+  </div>
+</div>

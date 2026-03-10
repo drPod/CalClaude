@@ -1,0 +1,96 @@
+<h2>App Icon — Blended Concepts</h2>
+<p class="subtitle">One unified element instead of two competing ones</p>
+
+<div class="cards">
+  <div class="card" data-choice="blend1" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width: 128px; height: 128px; margin: 16px auto; border-radius: 28px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(124, 58, 237, 0.3);">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <!-- Calendar that IS a terminal window -->
+          <!-- Window chrome -->
+          <rect x="6" y="6" width="68" height="68" rx="8" fill="rgba(124,58,237,0.1)" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/>
+          <!-- Title bar styled like terminal -->
+          <rect x="6" y="6" width="68" height="14" rx="8" fill="rgba(124,58,237,0.25)"/>
+          <!-- Traffic lights -->
+          <circle cx="16" cy="13" r="2.5" fill="#ff5f57"/>
+          <circle cx="24" cy="13" r="2.5" fill="#febc2e"/>
+          <circle cx="32" cy="13" r="2.5" fill="#28c840"/>
+          <!-- Terminal-style month display -->
+          <text x="12" y="30" fill="#a78bfa" font-family="monospace" font-size="8">$ cal</text>
+          <text x="12" y="39" fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="6">   March 2026</text>
+          <text x="12" y="47" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="5.5">Su Mo Tu We Th Fr Sa</text>
+          <text x="12" y="54" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="5.5"> 1  2  3  4  5  6  7</text>
+          <text x="12" y="61" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="5.5"> 8  9 </text>
+          <!-- Highlighted today with inverse -->
+          <rect x="28" y="56" width="11" height="7" rx="1.5" fill="#7c3aed"/>
+          <text x="29" y="62" fill="white" font-family="monospace" font-size="5.5" font-weight="bold">10</text>
+          <text x="40" y="61" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="5.5">11 12 13 14</text>
+          <text x="12" y="68" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="5.5">15 16 17 18 19 20 21</text>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Blend 1: Terminal Running `cal`</h3>
+      <p>A terminal window showing the output of the Unix `cal` command. The calendar IS the terminal output. Today highlighted. One unified metaphor — it's both a terminal and a calendar.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="blend2" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width: 128px; height: 128px; margin: 16px auto; border-radius: 28px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(124, 58, 237, 0.3);">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <!-- Calendar body -->
+          <rect x="8" y="12" width="64" height="58" rx="8" fill="rgba(124,58,237,0.08)" stroke="rgba(124,58,237,0.35)" stroke-width="1.5"/>
+          <!-- Calendar header with month -->
+          <rect x="8" y="12" width="64" height="16" rx="8" fill="#7c3aed"/>
+          <!-- Binding rings -->
+          <rect x="24" y="8" width="4" height="10" rx="2" fill="#a78bfa"/>
+          <rect x="52" y="8" width="4" height="10" rx="2" fill="#a78bfa"/>
+          <text x="24" y="24" fill="white" font-family="-apple-system" font-size="10" font-weight="600">MAR</text>
+          <!-- Grid area with cursor typing into a day -->
+          <text x="14" y="38" fill="rgba(255,255,255,0.3)" font-size="7">9</text>
+          <!-- Today cell — looks like active input -->
+          <rect x="28" y="31" width="18" height="14" rx="3" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
+          <text x="31" y="40" fill="white" font-size="7" font-weight="600">10</text>
+          <!-- Blinking cursor inside today's cell -->
+          <rect x="41" y="34" width="2" height="8" rx="0.5" fill="#a78bfa" opacity="0.8"/>
+          <text x="52" y="38" fill="rgba(255,255,255,0.3)" font-size="7">11</text>
+          <!-- More days -->
+          <text x="14" y="52" fill="rgba(255,255,255,0.25)" font-size="7">16</text>
+          <text x="33" y="52" fill="rgba(255,255,255,0.25)" font-size="7">17</text>
+          <text x="52" y="52" fill="rgba(255,255,255,0.25)" font-size="7">18</text>
+          <text x="14" y="65" fill="rgba(255,255,255,0.25)" font-size="7">23</text>
+          <text x="33" y="65" fill="rgba(255,255,255,0.25)" font-size="7">24</text>
+          <text x="52" y="65" fill="rgba(255,255,255,0.25)" font-size="7">25</text>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Blend 2: Calendar with Cursor</h3>
+      <p>A calendar icon where today's cell has a blinking text cursor inside it — as if you're typing directly into the calendar. The CLI is implied by the cursor, not a separate element.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="blend3" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width: 128px; height: 128px; margin: 16px auto; border-radius: 28px; background: linear-gradient(145deg, #7c3aed 0%, #4f46e5 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <!-- Simple calendar page -->
+          <rect x="12" y="10" width="56" height="60" rx="8" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <rect x="12" y="10" width="56" height="16" rx="8" fill="rgba(255,255,255,0.2)"/>
+          <!-- Rings -->
+          <rect x="26" y="6" width="4" height="10" rx="2" fill="rgba(255,255,255,0.5)"/>
+          <rect x="50" y="6" width="4" height="10" rx="2" fill="rgba(255,255,255,0.5)"/>
+          <!-- Prompt replacing the date -->
+          <text x="22" y="48" fill="rgba(255,255,255,0.9)" font-family="monospace" font-size="22" font-weight="bold">&gt;_</text>
+          <!-- Small text below like it's waiting for input -->
+          <text x="20" y="62" fill="rgba(255,255,255,0.4)" font-family="monospace" font-size="7">ask claude...</text>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Blend 3: Calendar Page as Prompt</h3>
+      <p>A calendar page where the body IS a command prompt — the &gt;_ sits where the date number normally would. Purple gradient, clean. The calendar IS the interface.</p>
+    </div>
+  </div>
+</div>
