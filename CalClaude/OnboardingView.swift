@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 struct OnboardingView: View {
@@ -99,23 +100,29 @@ struct OnboardingView: View {
             Text("Grant Accessibility Access")
                 .font(.title2.bold())
 
-            Text("The global shortcut (⌘⇧C) requires Accessibility permission. Add CalClaude in System Settings, then click Check Again.")
+            Text("The global shortcut (⌘⌥P) requires Accessibility permission. Add CalClaude in System Settings, then come back — this screen will advance automatically.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
 
-            HStack(spacing: 12) {
-                Button("Open System Settings") {
-                    AccessibilityPermission.openAccessibilitySettings()
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.purple)
-
-                Button("Check Again") {
-                    state.refreshAll()
-                    advanceIfMet()
-                }
-                .buttonStyle(.bordered)
+            Button("Open System Settings") {
+                _ = AccessibilityPermission.requestWithPrompt()
+                AccessibilityPermission.openAccessibilitySettings()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.purple)
+        }
+        .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
+            if AXIsProcessTrusted() {
+                state.refreshAll()
+                advanceIfMet()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            // Re-check as soon as user returns from System Settings
+            if AXIsProcessTrusted() {
+                state.refreshAll()
+                advanceIfMet()
             }
         }
     }

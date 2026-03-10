@@ -9,7 +9,7 @@ struct CalClaudeApp: App {
             Button("Show Panel") {
                 appDelegate.showPanel()
             }
-            .keyboardShortcut("c", modifiers: [.command, .shift])
+            .keyboardShortcut("p", modifiers: [.command, .option])
 
             Divider()
 

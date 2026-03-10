@@ -39,7 +39,7 @@ struct AccessibilityRequiredView: View {
             Text("Accessibility permission needed")
                 .font(.headline)
 
-            Text("The global shortcut (⌘⇧C) works from any app, so macOS requires Accessibility permission. Grant access in System Settings to use the shortcut.")
+            Text("The global shortcut (⌘⌥P) works from any app, so macOS requires Accessibility permission. Grant access in System Settings to use the shortcut.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

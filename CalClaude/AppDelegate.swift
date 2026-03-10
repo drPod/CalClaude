@@ -15,10 +15,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         onboardingController = OnboardingWindowController()
         onboardingController?.showIfNeeded { [weak self] in
             self?.proceedWithSetup()
+            self?.showPanel()
         }
     }
 
     private func proceedWithSetup() {
+        accessibilityState.refresh()
         createFloatingPanel()
         registerHotkey()
         observeAccessibilityChanges()
@@ -64,8 +66,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func registerHotkey() {
-        let keyCode = UInt32(kVK_ANSI_C)
-        let modifiers = CarbonModifiers.from(cocoa: [.command, .shift])
+        let keyCode = UInt32(kVK_ANSI_P)
+        let modifiers = CarbonModifiers.from(cocoa: [.command, .option])
         hotKeyManager = HotKeyManager(keyCode: keyCode, modifiers: modifiers) { [weak self] in
             self?.showPanel()
         }
@@ -73,13 +75,37 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func showPanel() {
         guard let panel = floatingPanel else { return }
-        panel.center()
+        accessibilityState.refresh()
+        let screen = NSScreen.main ?? NSScreen.screens.first
+        let visibleFrame = screen?.visibleFrame ?? NSRect(x: 0, y: 0, width: 1920, height: 1080)
+        if CalClaudeDefaults.rememberPanelPosition,
+           UserDefaults.standard.bool(forKey: CalClaudeDefaults.panelPositionSavedKey),
+           UserDefaults.standard.object(forKey: CalClaudeDefaults.panelOriginXKey) != nil,
+           UserDefaults.standard.object(forKey: CalClaudeDefaults.panelOriginYKey) != nil {
+            let savedX = UserDefaults.standard.double(forKey: CalClaudeDefaults.panelOriginXKey)
+            let savedY = UserDefaults.standard.double(forKey: CalClaudeDefaults.panelOriginYKey)
+            let clampedX = max(visibleFrame.minX, min(visibleFrame.maxX - panel.frame.width, savedX))
+            let clampedY = max(visibleFrame.minY, min(visibleFrame.maxY - panel.frame.height, savedY))
+            panel.setFrameOrigin(NSPoint(x: clampedX, y: clampedY))
+        } else {
+            let origin = NSPoint(
+                x: visibleFrame.midX - panel.frame.width / 2,
+                y: visibleFrame.minY + 80
+            )
+            panel.setFrameOrigin(origin)
+        }
         panel.orderFront(nil)
         panel.makeKey()
     }
 
     func hidePanel() {
         panelState.clearErrorAndPending()
+        if CalClaudeDefaults.rememberPanelPosition, let panel = floatingPanel {
+            let origin = panel.frame.origin
+            UserDefaults.standard.set(origin.x, forKey: CalClaudeDefaults.panelOriginXKey)
+            UserDefaults.standard.set(origin.y, forKey: CalClaudeDefaults.panelOriginYKey)
+            UserDefaults.standard.set(true, forKey: CalClaudeDefaults.panelPositionSavedKey)
+        }
         floatingPanel?.orderOut(nil)
     }
 

@@ -45,11 +45,15 @@ final class ClaudeCLIService {
 
         let systemPrompt = buildSystemPrompt()
 
+        guard let claudePath = CLICheck.resolvedPath else {
+            return .failure("Claude CLI not found. Please install it and make sure it is on your PATH.")
+        }
+
         let task = Task<Result<Data, String>, Never> {
             let process = Process()
-            process.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+            process.executableURL = URL(fileURLWithPath: claudePath)
             process.arguments = [
-                "claude", "-p",
+                "-p",
                 "--output-format", "json",
                 "--append-system-prompt", systemPrompt,
                 userMessage
@@ -73,22 +77,21 @@ final class ClaudeCLIService {
                     return .failure("Could not run Claude CLI: \(error.localizedDescription)")
                 }
 
-                // Collect stdout and stderr on background threads before the
-                // process file handles are invalidated.
-                let stdoutData: Data = await withCheckedContinuation { continuation in
-                    stdoutPipe.fileHandleForReading.readabilityHandler = nil
+                // Collect stdout and stderr CONCURRENTLY on background threads
+                // before the process file handles are invalidated.
+                // Reading sequentially risks deadlock if the child fills one
+                // pipe buffer (~64 KB) while we are draining the other.
+                async let stdoutResult: Data = withCheckedContinuation { continuation in
                     DispatchQueue.global(qos: .userInitiated).async {
-                        let data = stdoutPipe.fileHandleForReading.readDataToEndOfFile()
-                        continuation.resume(returning: data)
+                        continuation.resume(returning: stdoutPipe.fileHandleForReading.readDataToEndOfFile())
                     }
                 }
-                let stderrData: Data = await withCheckedContinuation { continuation in
-                    stderrPipe.fileHandleForReading.readabilityHandler = nil
+                async let stderrResult: Data = withCheckedContinuation { continuation in
                     DispatchQueue.global(qos: .userInitiated).async {
-                        let data = stderrPipe.fileHandleForReading.readDataToEndOfFile()
-                        continuation.resume(returning: data)
+                        continuation.resume(returning: stderrPipe.fileHandleForReading.readDataToEndOfFile())
                     }
                 }
+                let (stdoutData, stderrData) = await (stdoutResult, stderrResult)
 
                 // Wait for the process to finish.
                 await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in

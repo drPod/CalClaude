@@ -2,11 +2,11 @@
 
 A macOS menubar app for creating calendar events with natural language, powered by Claude.
 
-Press **⌘⇧C** from anywhere to open a Spotlight-style panel, describe your event in plain English (optionally attach a screenshot), and CalClaude uses the Claude CLI to parse it into a calendar event.
+Press **⌘⌥P** from anywhere to open a Spotlight-style panel, describe your event in plain English (optionally attach a screenshot), and CalClaude uses the Claude CLI to parse it into a calendar event.
 
 ## Features
 
-- **Global hotkey** — ⌘⇧C summons the input panel from any app
+- **Global hotkey** — ⌘⌥P summons the input panel from any app
 - **Natural language** — "Lunch with Sarah tomorrow at noon for 90 minutes"
 - **Screenshot support** — Capture a region and let Claude read event details from images
 - **Confirmation step** — Review parsed event details before creating
@@ -34,14 +34,14 @@ Select the **CalClaude** scheme, then **⌘R** to build and run.
 CalClaude's onboarding wizard checks three requirements:
 
 1. **Claude CLI** — Detects whether `claude` is installed and healthy
-2. **Accessibility** — Needed for the global ⌘⇧C hotkey
+2. **Accessibility** — Needed for the global ⌘⌥P hotkey
 3. **Calendar** — Permission to create events in your calendars
 
 The wizard reappears automatically if any requirement becomes unmet (e.g., CLI uninstalled, accessibility revoked).
 
 ## Usage
 
-1. Press **⌘⇧C** (or use the menubar menu) to open the panel
+1. Press **⌘⌥P** (or use the menubar menu) to open the panel
 2. Type a natural language event description
 3. Optionally click **Capture Screenshot** to include an image
 4. Press **⌘↵** or click **Send**
@@ -62,7 +62,7 @@ The wizard reappears automatically if any requirement becomes unmet (e.g., CLI u
 | `CalClaudeApp.swift` | App entry, MenuBarExtra, NSApplicationDelegateAdaptor |
 | `AppDelegate.swift` | Panel lifecycle, hotkey registration, onboarding, Claude/event orchestration |
 | `FloatingPanel.swift` | NSPanel subclass (Spotlight-style floating window) |
-| `HotKeyManager.swift` | Carbon global hotkey (⌘⇧C) |
+| `HotKeyManager.swift` | Carbon global hotkey (⌘⌥P) |
 | `InputPanelView.swift` | Text field, screenshot capture, send/cancel buttons |
 | `AccessibilityRequiredView.swift` | PanelRootView + accessibility permission screen |
 | `ClaudeCLIService.swift` | Runs Claude CLI with timeout, cancellation, and stderr surfacing |

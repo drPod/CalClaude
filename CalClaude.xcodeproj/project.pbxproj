@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CCCC000000000000AAAA0001 /* XPCRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC000000000000AAAA0002 /* XPCRegressionTests.swift */; };
+		CCCC000000000000AAAA0003 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCC000000000000AAAA0004 /* XCTest.framework */; };
 		A1B1C1D10000000100000001 /* CalClaudeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000100000001 /* CalClaudeApp.swift */; };
 		A1B1C1D10000000200000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000200000001 /* AppDelegate.swift */; };
 		A1B1C1D10000000300000001 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000000300000001 /* FloatingPanel.swift */; };
@@ -29,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CCCC000000000000AAAA0002 /* XPCRegressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCRegressionTests.swift; sourceTree = "<group>"; };
+		CCCC000000000000AAAA0004 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CCCC000000000000AAAA0005 /* CalClaudeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalClaudeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B1C1D30000000100000001 /* CalClaude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalClaude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B1C1D20000000100000001 /* CalClaudeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalClaudeApp.swift; sourceTree = "<group>"; };
 		A1B1C1D20000000200000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,13 +66,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CCCC000000000000AAAA0006 /* Frameworks (Tests) */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCC000000000000AAAA0003 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CCCC000000000000AAAA0007 /* CalClaudeTests */ = {
+			isa = PBXGroup;
+			children = (
+				CCCC000000000000AAAA0002 /* XPCRegressionTests.swift */,
+			);
+			path = CalClaudeTests;
+			sourceTree = "<group>";
+		};
 		A1B1C1D50000000100000001 = {
 			isa = PBXGroup;
 			children = (
 				A1B1C1D50000000200000001 /* CalClaude */,
+				CCCC000000000000AAAA0007 /* CalClaudeTests */,
 				A1B1C1D50000000300000001 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B1C1D30000000100000001 /* CalClaude.app */,
+				CCCC000000000000AAAA0005 /* CalClaudeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +148,22 @@
 			productName = CalClaude;
 			productReference = A1B1C1D30000000100000001 /* CalClaude.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CCCC000000000000AAAA0008 /* CalClaudeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCCC000000000000AAAA000B /* Build configuration list for PBXNativeTarget "CalClaudeTests" */;
+			buildPhases = (
+				CCCC000000000000AAAA0009 /* Sources */,
+				CCCC000000000000AAAA0006 /* Frameworks (Tests) */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalClaudeTests;
+			productName = CalClaudeTests;
+			productReference = CCCC000000000000AAAA0005 /* CalClaudeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -150,6 +189,7 @@
 			projectRoot = "";
 			targets = (
 				A1B1C1D60000000100000001 /* CalClaude */,
+				CCCC000000000000AAAA0008 /* CalClaudeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -187,6 +227,14 @@
 				A1B1C1D10000001200000001 /* OnboardingView.swift in Sources */,
 				A1B1C1D10000001300000001 /* OnboardingWindowController.swift in Sources */,
 				A1B1C1D10000001400000001 /* DebugLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCCC000000000000AAAA0009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCC000000000000AAAA0001 /* XPCRegressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +340,42 @@
 			};
 			name = Release;
 		};
+		CCCC000000000000AAAA000C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calclaude.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CCCC000000000000AAAA000D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calclaude.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -309,6 +393,15 @@
 			buildConfigurations = (
 				A1B1C1D90000000300000001 /* Debug */,
 				A1B1C1D90000000400000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCCC000000000000AAAA000B /* Build configuration list for PBXNativeTarget "CalClaudeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCCC000000000000AAAA000C /* Debug */,
+				CCCC000000000000AAAA000D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
