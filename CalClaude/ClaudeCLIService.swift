@@ -62,43 +62,65 @@ final class ClaudeCLIService {
 
             await MainActor.run { self.currentProcess = process }
 
+            // Read pipe data concurrently, then wait for process exit.
+            // This avoids reading inside terminationHandler, which causes
+            // "XPC connection was invalidated" when the pipe's XPC backing
+            // is torn down before readDataToEndOfFile() is called.
             let result: Result<Data, String> = await withTaskCancellationHandler {
-                await withCheckedContinuation { (continuation: CheckedContinuation<Result<Data, String>, Never>) in
-                    process.terminationHandler = { _ in
-                        let stdout = stdoutPipe.fileHandleForReading.readDataToEndOfFile()
-                        let stderrData = stderrPipe.fileHandleForReading.readDataToEndOfFile()
+                do {
+                    try process.run()
+                } catch {
+                    return .failure("Could not run Claude CLI: \(error.localizedDescription)")
+                }
 
-                        guard process.terminationStatus == 0 else {
-                            let stderr = String(data: stderrData, encoding: .utf8)?
-                                .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-                            if !stderr.isEmpty {
-                                let authPatterns = ["auth", "API key", "token", "login", "expired"]
-                                if authPatterns.contains(where: { stderr.localizedCaseInsensitiveContains($0) }) {
-                                    continuation.resume(returning: .failure(
-                                        "Claude CLI returned an error: \(stderr.components(separatedBy: .newlines).first ?? stderr). Try running 'claude' in Terminal to re-authenticate."
-                                    ))
-                                    return
-                                }
-                                let trimmed = stderr.count > 200 ? String(stderr.prefix(200)) + "…" : stderr
-                                continuation.resume(returning: .failure("Claude CLI error: \(trimmed)"))
-                            } else {
-                                continuation.resume(returning: .failure("Claude CLI exited with code \(process.terminationStatus)."))
-                            }
-                            return
-                        }
-
-                        guard let json = Self.extractEventJSON(from: stdout) else {
-                            continuation.resume(returning: .failure("Could not parse Claude response as event JSON."))
-                            return
-                        }
-                        continuation.resume(returning: .success(json))
-                    }
-                    do {
-                        try process.run()
-                    } catch {
-                        continuation.resume(returning: .failure("Could not run Claude CLI: \(error.localizedDescription)"))
+                // Collect stdout and stderr on background threads before the
+                // process file handles are invalidated.
+                let stdoutData: Data = await withCheckedContinuation { continuation in
+                    stdoutPipe.fileHandleForReading.readabilityHandler = nil
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        let data = stdoutPipe.fileHandleForReading.readDataToEndOfFile()
+                        continuation.resume(returning: data)
                     }
                 }
+                let stderrData: Data = await withCheckedContinuation { continuation in
+                    stderrPipe.fileHandleForReading.readabilityHandler = nil
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        let data = stderrPipe.fileHandleForReading.readDataToEndOfFile()
+                        continuation.resume(returning: data)
+                    }
+                }
+
+                // Wait for the process to finish.
+                await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+                    if process.isRunning {
+                        process.terminationHandler = { _ in
+                            continuation.resume()
+                        }
+                    } else {
+                        continuation.resume()
+                    }
+                }
+
+                guard process.terminationStatus == 0 else {
+                    let stderr = String(data: stderrData, encoding: .utf8)?
+                        .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                    if !stderr.isEmpty {
+                        let authPatterns = ["auth", "API key", "token", "login", "expired"]
+                        if authPatterns.contains(where: { stderr.localizedCaseInsensitiveContains($0) }) {
+                            return .failure(
+                                "Claude CLI returned an error: \(stderr.components(separatedBy: .newlines).first ?? stderr). Try running 'claude' in Terminal to re-authenticate."
+                            )
+                        }
+                        let trimmed = stderr.count > 200 ? String(stderr.prefix(200)) + "…" : stderr
+                        return .failure("Claude CLI error: \(trimmed)")
+                    }
+                    return .failure("Claude CLI exited with code \(process.terminationStatus).")
+                }
+
+                guard let json = Self.extractEventJSON(from: stdoutData) else {
+                    return .failure("Could not parse Claude response as event JSON.")
+                }
+                return .success(json)
             } onCancel: {
                 process.terminate()
             }
