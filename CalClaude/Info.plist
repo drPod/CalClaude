@@ -22,6 +22,8 @@
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>CalClaude needs Screen Recording permission to capture the frontmost window for event parsing.</string>
 	<key>NSCalendarsFullAccessUsageDescription</key>
 	<string>CalClaude needs calendar access to create events from your natural language requests.</string>
 	<key>NSHumanReadableCopyright</key>

@@ -8,6 +8,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var settingsWindow: NSWindow?
     private var hotKeyManager: HotKeyManager?
     private let accessibilityState = AccessibilityState()
+    private let screenRecordingState = ScreenRecordingState()
     let panelState = PanelState()
     private var onboardingController: OnboardingWindowController?
 
@@ -28,7 +29,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func createFloatingPanel() {
         let panel = FloatingPanel(
-            contentRect: NSRect(x: 0, y: 0, width: 520, height: 140),
+            contentRect: NSRect(x: 0, y: 0, width: 520, height: 320),
             backing: .buffered,
             defer: false
         )
@@ -36,6 +37,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         panel.contentView = NSHostingView(
             rootView: PanelRootView(
                 accessibilityState: accessibilityState,
+                screenRecordingState: screenRecordingState,
+                screenCaptureService: ScreenCaptureService.shared,
                 panelState: panelState,
                 onDismiss: { [weak self] in self?.hidePanel() },
                 onSubmit: { [weak self] text, screenshotPath in
@@ -69,7 +72,29 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let keyCode = UInt32(kVK_ANSI_P)
         let modifiers = CarbonModifiers.from(cocoa: [.command, .option])
         hotKeyManager = HotKeyManager(keyCode: keyCode, modifiers: modifiers) { [weak self] in
-            self?.showPanel()
+            self?.handleHotKey()
+        }
+    }
+
+    private func handleHotKey() {
+        accessibilityState.refresh()
+
+        Task { @MainActor in
+            // Use async check so permission is detected without app restart
+            let hasScreenRecording = await ScreenRecordingPermission.checkAccess()
+            screenRecordingState.isAuthorized = hasScreenRecording
+
+            guard hasScreenRecording else {
+                showPanel()
+                return
+            }
+
+            do {
+                try await ScreenCaptureService.shared.captureFrontmostWindow()
+            } catch {
+                DebugLog.log(location: "AppDelegate:handleHotKey", message: "capture failed: \(error.localizedDescription)", hypothesisId: "")
+            }
+            showPanel()
         }
     }
 

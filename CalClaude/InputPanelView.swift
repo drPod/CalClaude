@@ -3,9 +3,8 @@ import AppKit
 
 struct InputPanelView: View {
     @ObservedObject var panelState: PanelState
+    @ObservedObject var screenCaptureService: ScreenCaptureService
     @State private var inputText = ""
-    @State private var screenshotPath: String?
-    @State private var isCapturing = false
 
     var onDismiss: () -> Void
     var onSubmit: (String, String?) -> Void
@@ -53,37 +52,61 @@ struct InputPanelView: View {
 
     private var inputSection: some View {
         Group {
+            if let image = screenCaptureService.capturedImage {
+                VStack(spacing: 6) {
+                    Image(nsImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 120)
+                        .cornerRadius(6)
+
+                    HStack(spacing: 8) {
+                        Text("Press Send to extract event details")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Spacer()
+                        Button("Remove") {
+                            screenCaptureService.clearCapture()
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.small)
+                        Button("Recapture") {
+                            Task {
+                                try? await screenCaptureService.captureFrontmostWindow()
+                            }
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.small)
+                        .disabled(panelState.isLoading)
+                    }
+                }
+                .padding(.horizontal, 8)
+                .padding(.top, 8)
+            }
+
             HStack(alignment: .top, spacing: 10) {
-                TextField("Ask Claude…", text: $inputText, axis: .vertical)
+                TextField(
+                    screenCaptureService.capturedImage != nil
+                        ? "Describe the event, or just press Send"
+                        : "Ask Claude…",
+                    text: $inputText,
+                    axis: .vertical
+                )
                     .textFieldStyle(.plain)
                     .lineLimit(2...4)
                     .onSubmit { submit() }
                     .disabled(panelState.isLoading)
 
-                Button("Capture Screenshot") {
-                    captureScreenshot()
+                if screenCaptureService.capturedImage == nil {
+                    Button("Recapture") {
+                        Task {
+                            try? await screenCaptureService.captureFrontmostWindow()
+                        }
+                    }
+                    .disabled(panelState.isLoading)
                 }
-                .disabled(isCapturing || panelState.isLoading)
             }
             .padding(8)
-
-            if let path = screenshotPath {
-                HStack {
-                    Image(systemName: "photo.fill")
-                        .foregroundStyle(.secondary)
-                    Text(path)
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Button("Remove") {
-                        screenshotPath = nil
-                    }
-                    .buttonStyle(.borderless)
-                }
-                .padding(.horizontal, 8)
-            }
 
             HStack {
                 if panelState.isLoading {
@@ -127,40 +150,10 @@ struct InputPanelView: View {
         .background(.regularMaterial)
     }
 
-    private func captureScreenshot() {
-        isCapturing = true
-        let tempURL = FileManager.default.temporaryDirectory
-            .appendingPathComponent("CalClaude_screenshot_\(UUID().uuidString.prefix(8)).png")
-
-        DispatchQueue.global(qos: .userInitiated).async {
-            let process = Process()
-            process.executableURL = URL(fileURLWithPath: "/usr/sbin/screencapture")
-            process.arguments = ["-i", "-x", tempURL.path]
-
-            do {
-                try process.run()
-                process.waitUntilExit()
-                let success = process.terminationStatus == 0 &&
-                    FileManager.default.fileExists(atPath: tempURL.path) &&
-                    ((try? FileManager.default.attributesOfItem(atPath: tempURL.path))?[.size] as? Int64 ?? 0) > 0
-                DispatchQueue.main.async {
-                    isCapturing = false
-                    if success {
-                        screenshotPath = tempURL.path
-                    }
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    isCapturing = false
-                }
-            }
-        }
-    }
-
     private func submit() {
         let text = inputText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !text.isEmpty || screenshotPath != nil else { return }
+        guard !text.isEmpty || screenCaptureService.screenshotPath != nil else { return }
         guard !panelState.isLoading else { return }
-        onSubmit(text, screenshotPath)
+        onSubmit(text, screenCaptureService.screenshotPath)
     }
 }

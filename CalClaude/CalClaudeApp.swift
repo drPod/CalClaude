@@ -21,6 +21,10 @@ struct CalClaudeApp: App {
                 AccessibilityPermission.openAccessibilitySettings()
             }
 
+            Button("Open Screen Recording Settings") {
+                ScreenRecordingPermission.openSettings()
+            }
+
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
             }

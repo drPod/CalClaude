@@ -5,7 +5,7 @@ final class ClaudeCLIService {
 
     private var currentProcess: Process?
     private var currentTask: Task<Result<Data, String>, Never>?
-    private let timeoutSeconds: UInt64 = 30
+    private let timeoutSeconds: UInt64 = 60
 
     private let jsonInstruction = """
     Respond with only a valid JSON object with these exact keys: title (string), date (YYYY-MM-DD), time (HH:mm), duration (integer, minutes), calendar (string). No other text or markdown.
@@ -35,10 +35,20 @@ final class ClaudeCLIService {
     func runClaude(prompt: String, screenshotPath: String?) async -> Result<Data, String> {
         cancel()
 
+        let hasScreenshot = screenshotPath != nil && !screenshotPath!.isEmpty
         var userMessage = prompt.trimmingCharacters(in: .whitespacesAndNewlines)
-        if let path = screenshotPath, !path.isEmpty {
-            userMessage += " (Screenshot saved at: \(path) — please read and consider it.)"
+
+        if hasScreenshot {
+            // When screenshot is present, build a prompt that tells Claude to
+            // use the Read tool to view the image file, then extract the event.
+            let path = screenshotPath!
+            if userMessage.isEmpty {
+                userMessage = "Read the image file at \(path) and extract the calendar event details from it."
+            } else {
+                userMessage = "Read the image file at \(path) and use it along with the following instructions to extract the calendar event: \(userMessage)"
+            }
         }
+
         guard !userMessage.isEmpty else {
             return .failure("Please enter a message or attach a screenshot.")
         }
@@ -52,12 +62,18 @@ final class ClaudeCLIService {
         let task = Task<Result<Data, String>, Never> {
             let process = Process()
             process.executableURL = URL(fileURLWithPath: claudePath)
-            process.arguments = [
+            var args = [
                 "-p",
                 "--output-format", "json",
                 "--append-system-prompt", systemPrompt,
-                userMessage
             ]
+            // When a screenshot is present, enable the Read tool so Claude can
+            // view the image file via its built-in vision capability.
+            if hasScreenshot {
+                args += ["--allowedTools", "Read"]
+            }
+            args.append(userMessage)
+            process.arguments = args
             let stdoutPipe = Pipe()
             let stderrPipe = Pipe()
             process.standardOutput = stdoutPipe

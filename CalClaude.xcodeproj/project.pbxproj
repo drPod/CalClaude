@@ -28,6 +28,8 @@
 		A1B1C1D10000001200000001 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001200000001 /* OnboardingView.swift */; };
 		A1B1C1D10000001300000001 /* OnboardingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001300000001 /* OnboardingWindowController.swift */; };
 		A1B1C1D10000001400000001 /* DebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001400000001 /* DebugLog.swift */; };
+		A1B1C1D10000001500000001 /* ScreenRecordingPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001500000001 /* ScreenRecordingPermission.swift */; };
+		A1B1C1D10000001600000001 /* ScreenCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D20000001600000001 /* ScreenCaptureService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		A1B1C1D20000001200000001 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A1B1C1D20000001300000001 /* OnboardingWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWindowController.swift; sourceTree = "<group>"; };
 		A1B1C1D20000001400000001 /* DebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLog.swift; sourceTree = "<group>"; };
+		A1B1C1D20000001500000001 /* ScreenRecordingPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecordingPermission.swift; sourceTree = "<group>"; };
+		A1B1C1D20000001600000001 /* ScreenCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 				A1B1C1D20000001200000001 /* OnboardingView.swift */,
 				A1B1C1D20000001300000001 /* OnboardingWindowController.swift */,
 				A1B1C1D20000001400000001 /* DebugLog.swift */,
+				A1B1C1D20000001500000001 /* ScreenRecordingPermission.swift */,
+				A1B1C1D20000001600000001 /* ScreenCaptureService.swift */,
 				A1B1C1D20000000700000001 /* Assets.xcassets */,
 				A1B1C1D20000000800000001 /* Info.plist */,
 			);
@@ -227,6 +233,8 @@
 				A1B1C1D10000001200000001 /* OnboardingView.swift in Sources */,
 				A1B1C1D10000001300000001 /* OnboardingWindowController.swift in Sources */,
 				A1B1C1D10000001400000001 /* DebugLog.swift in Sources */,
+				A1B1C1D10000001500000001 /* ScreenRecordingPermission.swift in Sources */,
+				A1B1C1D10000001600000001 /* ScreenCaptureService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
